@@ -6,6 +6,9 @@ import { getMatchStatus } from "../../utils/matchStatusMapper";
 const DateGroup = ({ date, matches = [] }) => {
   const formattedDate = format(new Date(date), "EEEE dd MMMM yyyy");
 
+  // Sort matches by timestamp in ascending order
+  matches.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
   return (
     <div className="date-group">
       <h2 className="date-group-heading">{formattedDate}</h2>
@@ -41,7 +44,6 @@ const DateGroup = ({ date, matches = [] }) => {
                 Status: <span>{getMatchStatus(match.matchStatusId)}</span>
               </p>
             )}
-
             <p className="match-stadium">Stadium: {match.stadium.name}</p>
           </div>
         ))}
