@@ -30,8 +30,8 @@ const App = () => {
 
   return (
     <div>
-      {Object.entries(matches).map(([date, matches], index) => (
-        <DateGroup key={index} date={date} matches={matches} />
+      {Object.entries(matches).map(([date, matchGroups], index) => (
+        <DateGroup key={index} date={date} matches={matchGroups} />
       ))}
     </div>
   );

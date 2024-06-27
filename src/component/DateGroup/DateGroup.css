@@ -1,0 +1,45 @@
+.date-group {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.date-group h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.date-group h3 {
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+
+.match {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.match-status-ongoing {
+  color: green;
+}
