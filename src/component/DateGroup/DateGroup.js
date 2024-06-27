@@ -12,7 +12,11 @@ const DateGroup = ({ date, matches, groupName = [] }) => {
       <div className="date-group-item">
         {matches.map((match, index) => (
           <div key={index} className="match">
-            <p>{match.groupName}</p>
+            <div>
+              <p>{match.groupName}</p>
+              <p>{match.stadium.name}</p>
+            </div>
+
             <p className="match-results">
               {match.homeTeam.name}{" "}
               <span className="match-results-score">
