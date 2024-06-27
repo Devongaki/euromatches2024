@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./App.css"
+import "./App.css";
 import { fetchAllMatches } from "./api/FetchAllMatches";
 import DateGroup from "./component/DateGroup/DateGroup";
+import Header from "./component/Header/Header";
 
 const App = () => {
   const [matchesByDate, setMatchesByDate] = useState({});
@@ -27,10 +28,16 @@ const App = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  // Sort the dates in ascending order
+  const sortedDates = Object.keys(matchesByDate).sort(
+    (a, b) => new Date(a) - new Date(b)
+  );
+
   return (
     <div>
-      {Object.entries(matchesByDate).map(([date, matches], index) => (
-        <DateGroup key={index} date={date} matches={matches} />
+      <Header />
+      {sortedDates.map((date, index) => (
+        <DateGroup key={index} date={date} matches={matchesByDate[date]} />
       ))}
     </div>
   );

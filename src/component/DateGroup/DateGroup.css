@@ -35,12 +35,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+.match-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .match {
   padding: 20px;
   border: 1px solid #ccc;
   border-color: #dbdfe0;
   border-radius: 10px;
   background-color: #ffffff;
+  transition: box-shadow 0.3s ease;
+}
+
+.match:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .group-name {
@@ -62,10 +73,18 @@
   padding-bottom: 12px;
 }
 
+.match-results img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
 .match-status-done,
 .match-stadium {
   font-size: 18px;
 }
+
 .match-status-done span {
   color: green;
 }

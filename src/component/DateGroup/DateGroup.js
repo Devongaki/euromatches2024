@@ -16,18 +16,28 @@ const DateGroup = ({ date, matches = [] }) => {
         {matches.map((match, index) => (
           <div key={index} className="match">
             <p className="group-name">{match.groupName}</p>
-            <p className="match-results">
+            <div className="match-results">
+              <img
+                src={match.homeTeam.logo.url}
+                alt={`${match.homeTeam.name} logo`}
+                className="team-logo"
+              />
               {match.homeTeam.name}{" "}
               <span className="match-results-score">
                 {match.result.homeScore90}
               </span>
-            </p>
-            <p className="match-results">
+            </div>
+            <div className="match-results">
+              <img
+                src={match.awayTeam.logo.url}
+                alt={`${match.awayTeam.name} logo`}
+                className="team-logo"
+              />
               {match.awayTeam.name}{" "}
               <span className="match-results-score">
                 {match.result.awayScore90}
               </span>
-            </p>
+            </div>
             {match.matchStatusId === 2 ? (
               <p className="match-status-scheduled">
                 Status:{" "}
