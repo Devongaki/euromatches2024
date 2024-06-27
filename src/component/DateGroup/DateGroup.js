@@ -28,7 +28,7 @@ const DateGroup = ({ date, matches = [] }) => {
                 {match.result.awayScore90}
               </span>
             </p>
-            {match.matchStatusId === 1 ? (
+            {match.matchStatusId === 2 ? (
               <p className="match-status-scheduled">
                 Status:{" "}
                 <span>
