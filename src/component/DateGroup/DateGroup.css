@@ -41,15 +41,39 @@
   border-color: #dbdfe0;
   border-radius: 10px;
   background-color: #ffffff;
+}
 
+.group-name {
+  color: #637a85;
+  font-size: 14px;
+}
+
+.match-title p {
+  font-size: 18px;
 }
 
 .match-results {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #1a313c;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 12px;
 }
 
-.match-status-ongoing {
+.match-status-done,
+.match-stadium {
+  font-size: 18px;
+}
+.match-status-done span {
   color: green;
+}
+
+.match-status-scheduled {
+  font-size: 18px;
+}
+
+.match-status-scheduled span {
+  color: orange;
 }
