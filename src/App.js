@@ -1,6 +1,8 @@
 // src/App.js
 import React, { useEffect, useState } from "react";
 import { fetchAllMatches } from "./api/FetchAllMatches";
+import { groupMatchesByDate } from "./utils/groupMatchesByDate";
+import DateGroup from "./component/DateGroup/DateGroup";
 
 const App = () => {
   const [matches, setMatches] = useState([]);
@@ -11,7 +13,8 @@ const App = () => {
     const loadMatches = async () => {
       try {
         const fetchedMatches = await fetchAllMatches();
-        setMatches(fetchedMatches);
+        const groupedMatches = groupMatchesByDate(fetchedMatches);
+        setMatches(groupedMatches);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -27,14 +30,8 @@ const App = () => {
 
   return (
     <div>
-      {matches.map((match, index) => (
-        <div key={index}>
-          <p>Match ID: {match.id}</p>
-          <p>Home Team: {match.homeTeam.name}</p>
-          <p>Away Team: {match.awayTeam.name}</p>
-          <p>Date: {match.lastUpdated}</p>
-          <p>Stadium: {match.stadium.name}</p>
-        </div>
+      {Object.entries(matches).map(([date, matches], index) => (
+        <DateGroup key={index} date={date} matches={matches} />
       ))}
     </div>
   );

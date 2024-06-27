@@ -1,20 +1,20 @@
-// // src/utils/groupMatchesByDate.js
-// export function GroupMatchesByDate(matches) {
-//   return matches.reduce((grouped, match) => {
-//     let date;
-//     if (match.timestamp) {
-//       date = match.timestamp.split("T")[0];
-//     } else if (match.date) {
-//       date = match.date.split("T")[0];
-//     } else {
-//       console.warn("Match without date:", match);
-//       date = "Unknown Date";
-//     }
+// src/components/DateGroup.js
+import React from "react";
 
-//     if (!grouped[date]) {
-//       grouped[date] = [];
-//     }
-//     grouped[date].push(match);
-//     return grouped;
-//   }, {});
-// }
+const DateGroup = ({ date, matches }) => {
+  return (
+    <div>
+      <h2>{date}</h2>
+      {matches.map((match, index) => (
+        <div key={index}>
+          <p>Match ID: {match.id}</p>
+          <p>Home Team: {match.homeTeam.name}</p>
+          <p>Away Team: {match.awayTeam.name}</p>
+          <p>Date: {match.date}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default DateGroup;
