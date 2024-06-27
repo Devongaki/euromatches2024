@@ -1,11 +1,10 @@
 // src/App.js
 import React, { useEffect, useState } from "react";
 import { fetchAllMatches } from "./api/FetchAllMatches";
-import { groupMatchesByDate } from "./utils/groupMatchesByDate";
 import DateGroup from "./component/DateGroup/DateGroup";
 
 const App = () => {
-  const [matches, setMatches] = useState([]);
+  const [matchesByDate, setMatchesByDate] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,7 +13,7 @@ const App = () => {
       try {
         const fetchedMatches = await fetchAllMatches();
         const groupedMatches = groupMatchesByDate(fetchedMatches);
-        setMatches(groupedMatches);
+        setMatchesByDate(groupedMatches);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -30,11 +29,22 @@ const App = () => {
 
   return (
     <div>
-      {Object.entries(matches).map(([date, matchGroups], index) => (
-        <DateGroup key={index} date={date} matches={matchGroups} />
+      {Object.entries(matchesByDate).map(([date, matches], index) => (
+        <DateGroup key={index} date={date} matches={matches} />
       ))}
     </div>
   );
+};
+
+const groupMatchesByDate = (matches) => {
+  return matches.reduce((acc, match) => {
+    const date = match.timestamp.split("T")[0]; // Assuming the timestamp format is ISO 8601
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+    acc[date].push(match);
+    return acc;
+  }, {});
 };
 
 export default App;
