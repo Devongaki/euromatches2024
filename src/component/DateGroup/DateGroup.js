@@ -1,12 +1,14 @@
 // src/components/DateGroup.js
 import React from "react";
 import "./DateGroup.css";
+import { format } from "date-fns";
 import { getMatchStatus } from "../../utils/matchStatusMapper";
 
 const DateGroup = ({ date, matches = [] }) => {
+    const formattedDate = format(new Date(date), "EEEE dd MMMM yyy")
   return (
     <div className="date-group">
-      <h2 className="date-group-heading">{date}</h2>
+      <h2 className="date-group-heading">{formattedDate}</h2>
       <div className="date-group-item">
         {matches.map((match, index) => (
           <div key={index} className="match">

@@ -1,5 +1,6 @@
 // src/App.js
 import React, { useEffect, useState } from "react";
+import "./App.css"
 import { fetchAllMatches } from "./api/FetchAllMatches";
 import DateGroup from "./component/DateGroup/DateGroup";
 
