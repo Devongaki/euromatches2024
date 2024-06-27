@@ -1,36 +1,43 @@
-import React, { useState, useEffect } from "react";
-import MatchList from "./component/MatchList/MatchList";
-import { fetchAllMatches } from "./utils";
+// src/App.js
+import React, { useEffect, useState } from "react";
+import { fetchAllMatches } from "./api/FetchAllMatches";
 
-function App() {
+const App = () => {
   const [matches, setMatches] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const loadMatches = async () => {
       try {
-        const allMatches = await fetchAllMatches();
-        setMatches(allMatches);
-      } catch (err) {
-        setError("Failed to fetch matches. Please try again later.");
+        const fetchedMatches = await fetchAllMatches();
+        setMatches(fetchedMatches);
+      } catch (error) {
+        setError(error.message);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
     loadMatches();
   }, []);
 
-  if (isLoading) return <div>Loading matches...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="App">
-      <h1>Euro 2024 Group Stage Matches</h1>
-      <MatchList matches={matches} />
+    <div>
+      {matches.map((match, index) => (
+        <div key={index}>
+          <p>Match ID: {match.id}</p>
+          <p>Home Team: {match.homeTeam.name}</p>
+          <p>Away Team: {match.awayTeam.name}</p>
+          <p>Date: {match.lastUpdated}</p>
+          <p>Stadium: {match.stadium.name}</p>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default App;

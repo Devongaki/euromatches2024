@@ -68,3 +68,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+
+
+**TASKS TO COMPLETE**
+
+# Group matches by date.
+# For each date, list all matches scheduled for that day.
+# Display the result for finished matches.
+# For ongoing matches, display the current result and indicate that the match is ongoing.
+# For matches that have not started, display the scheduled start time.
+# Include the group each match belongs to and the stadium where it will be played.
