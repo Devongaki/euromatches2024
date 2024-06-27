@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect, useState } from "react";
 import "./App.css"
 import { fetchAllMatches } from "./api/FetchAllMatches";
@@ -38,13 +37,13 @@ const App = () => {
 };
 
 const groupMatchesByDate = (matches) => {
-  return matches.reduce((acc, match) => {
-    const date = match.timestamp.split("T")[0]; // Assuming the timestamp format is ISO 8601
-    if (!acc[date]) {
-      acc[date] = [];
+  return matches.reduce((dateGroup, match) => {
+    const date = match.timestamp.split("T")[0];
+    if (!dateGroup[date]) {
+      dateGroup[date] = [];
     }
-    acc[date].push(match);
-    return acc;
+    dateGroup[date].push(match);
+    return dateGroup;
   }, {});
 };
 
