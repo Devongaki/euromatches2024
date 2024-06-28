@@ -14,3 +14,21 @@
   font-size: 2em;
   font-family: "Oswald", sans-serif;
 }
+
+/* Media query for tablets (768px and up) */
+@media (max-width: 1024px) {
+  .app-title {
+    font-size: 1.5em; 
+  }
+}
+
+/* Media query for phones (up to 768px) */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 1.2em;
+  }
+
+  .app-header {
+    padding: 10px;
+  }
+}
