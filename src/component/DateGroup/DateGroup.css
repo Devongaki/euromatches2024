@@ -86,7 +86,7 @@
 }
 
 .match-status-done span {
-  color: green;
+  color: red;
 }
 
 .match-status-scheduled {
@@ -95,4 +95,12 @@
 
 .match-status-scheduled span {
   color: orange;
+}
+
+.match-status-ongoing {
+  font-size: 18px;
+}
+
+.match-status-ongoing span {
+  color: green;
 }
